@@ -16,7 +16,21 @@ public class Window {
     private static final int BOTTOM_BORDER = 20;
     private static final int YTITLE = 30;
     private static final int WINDOW_BORDER = 8;
-    
+/*
+How to Add Code to Repository
+1: git add -A
+2: git commit -m "new Code"
+3: git push origin master
+
+
+How to Get Code from Repository
+1: git pull origin master
+
+How to Get Clone from Repository
+1: git clone LINK
+
+
+*/    
     
     static final int WINDOW_WIDTH = 2*(WINDOW_BORDER + XBORDER) + 600;
     static final int WINDOW_HEIGHT = YTITLE + WINDOW_BORDER + 600;

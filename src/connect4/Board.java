@@ -4,7 +4,21 @@ import java.awt.*;
 
 public class Board {
     private final static int NUM_CONNECT_WIN = 4;    
-    
+/*
+How to Add Code to Repository
+1: git add -A
+2: git commit -m "new Code"
+3: git push origin master
+
+
+How to Get Code from Repository
+1: git pull origin master
+
+How to Get Clone from Repository
+1: git clone LINK
+
+
+*/    
     private final static int NUM_ROWS = 9;
     private final static int NUM_COLUMNS = 9;      
     private static Piece board[][] = new Piece[NUM_ROWS][NUM_COLUMNS];
