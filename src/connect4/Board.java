@@ -428,12 +428,7 @@ How to Get Clone from Repository
                 }
             }
         } 
-        
-        g.setFont(new Font("Arial",Font.PLAIN,20));
-        g.setColor(Player.getPlayer1().getColor());
-        g.drawString("Player1 = " + Player.getPlayer1().getPoints(), 25,70);              
-        g.setColor(Player.getPlayer2().getColor());
-        g.drawString("Player2 = " + Player.getPlayer2().getPoints(), 520,70);              
+                     
         
         if (winner == Player.getPlayer1()) {
             g.setColor(Player.getPlayer1().getColor());
