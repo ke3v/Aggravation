@@ -24,11 +24,6 @@ How to Get Clone from Repository
         color = _color;
         rect = false;
     }
-    Piece(Color _color, boolean _rect)
-    {
-        color = _color;
-        rect = _rect;
-    }
     public Color getColor()
     {
         return (color);
@@ -40,11 +35,7 @@ How to Get Clone from Repository
     public void draw(Graphics2D g,int row,int column,
     int xdelta,int ydelta) {
         g.setColor(color); 
-        if(!rect)
         g.fillOval(Window.getX(column*xdelta),
-        Window.getY(row*ydelta),xdelta,ydelta);
-        if(rect)
-        g.fillRect(Window.getX(column*xdelta),
         Window.getY(row*ydelta),xdelta,ydelta);
            
     }

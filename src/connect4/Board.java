@@ -31,7 +31,7 @@ How to Get Clone from Repository
         {
             for (int zx = 0;zx<NUM_COLUMNS;zx++)
             {
-                board[zi][zx] = new Piece(Color.CYAN, true);
+                board[zi][zx] = null;//new Piece(Color.CYAN, true);
             }
         }
         winner = null;
@@ -409,18 +409,7 @@ How to Get Clone from Repository
         int xdelta = Window.getWidth2()/NUM_COLUMNS;
         
  //draw grid
-        g.setColor(Color.black);
-        for (int zi = 1;zi<NUM_ROWS;zi++)
-        {
-            g.drawLine(Window.getX(0),Window.getY(zi*ydelta),
-                    Window.getX(Window.getWidth2()),Window.getY(zi*ydelta));
-        }
-        
-        for (int zi = 1;zi<NUM_COLUMNS;zi++)
-        {
-            g.drawLine(Window.getX(zi*xdelta),Window.getY(0),
-                    Window.getX(zi*xdelta),Window.getY(Window.getHeight2()));
-        }
+
                 
         for (int zi = 0;zi<NUM_ROWS;zi++)
         {
