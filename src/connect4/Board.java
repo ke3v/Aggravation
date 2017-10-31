@@ -35,6 +35,22 @@ How to Get Clone from Repository
             }
         }
         winner = null;
+        
+        board[0][0] = new Piece(Color.RED);
+        board[0][1] = new Piece(Color.RED);
+        board[1][0] = new Piece(Color.RED);
+        
+        board[8][0] = new Piece(Color.YELLOW);
+        board[8][1] = new Piece(Color.YELLOW);
+        board[7][0] = new Piece(Color.YELLOW);
+        
+        board[8][8] = new Piece(Color.BLUE);
+        board[8][7] = new Piece(Color.BLUE);
+        board[7][8] = new Piece(Color.BLUE);
+        
+        board[0][8] = new Piece(Color.GREEN);
+        board[1][8] = new Piece(Color.GREEN);
+        board[0][7] = new Piece(Color.GREEN);
 
     }
     
@@ -68,7 +84,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() == colorMatch)
                 {   
                     numConsecutive++;      
-                    totalPoints += board[row][col].getValue();
                     if (numConsecutive == NUM_CONNECT_WIN)
                     {
                         for(int i=0; i<=3; i++)
@@ -80,7 +95,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() != colorMatch)
                 {                                   
                     numConsecutive = 1;
-                    totalPoints = board[row][col].getValue();
                     colorMatch = board[row][col].getColor();
                 }        
              
@@ -108,7 +122,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() == colorMatch)
                 {   
                     numConsecutive++;                    
-                    totalPoints += board[row][col].getValue();
                     
                     if (numConsecutive == NUM_CONNECT_WIN)
                     {
@@ -122,7 +135,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() != colorMatch)
                 {                                   
                     numConsecutive = 1;
-                    totalPoints = board[row][col].getValue();
                     
                     colorMatch = board[row][col].getColor();
                 }        
@@ -156,7 +168,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() == colorMatch)
                 {   
                     numConsecutive++;                    
-                    totalPoints += board[row][col].getValue();
                     
                     if (numConsecutive == NUM_CONNECT_WIN)
                     {
@@ -170,7 +181,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() != colorMatch)
                 {                                   
                     numConsecutive = 1;
-                    totalPoints = board[row][col].getValue();
                     colorMatch = board[row][col].getColor();
                 }        
              
@@ -201,7 +211,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() == colorMatch)
                 {   
                     numConsecutive++;                    
-                    totalPoints += board[row][col].getValue();
                     
                     if (numConsecutive == NUM_CONNECT_WIN)
                     {
@@ -215,7 +224,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() != colorMatch)
                 {                                   
                     numConsecutive = 1;
-                    totalPoints = board[row][col].getValue();
                     colorMatch = board[row][col].getColor();
                 }        
              
@@ -248,7 +256,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() == colorMatch)
                 {   
                     numConsecutive++;                    
-                    totalPoints += board[row][col].getValue();
                     
                     if (numConsecutive == NUM_CONNECT_WIN)
                     {
@@ -262,7 +269,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() != colorMatch)
                 {                                   
                     numConsecutive = 1;
-                    totalPoints = board[row][col].getValue();
                     colorMatch = board[row][col].getColor();
                 }        
               
@@ -293,7 +299,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() == colorMatch)
                 {   
                     numConsecutive++;                    
-                    totalPoints += board[row][col].getValue();
                     
                     if (numConsecutive == NUM_CONNECT_WIN)
                     {
@@ -307,7 +312,6 @@ How to Get Clone from Repository
                 else if (board[row][col].getColor() != colorMatch)
                 {                                   
                     numConsecutive = 1;
-                    totalPoints = board[row][col].getValue();
                     colorMatch = board[row][col].getColor();
                 }        
                    
@@ -429,19 +433,16 @@ How to Get Clone from Repository
             }
         } 
                      
-        
+        g.setColor(Color.black);
         if (winner == Player.getPlayer1()) {
-            g.setColor(Player.getPlayer1().getColor());
             g.setFont(new Font("Arial",Font.PLAIN,30));
             g.drawString("Player 1 has Won", 200,70);              
         }
         else if (winner == Player.getPlayer2()) {
-            g.setColor(Player.getPlayer2().getColor());
             g.setFont(new Font("Arial",Font.PLAIN,30));
             g.drawString("Player 2 has Won", 200,70);              
         }
         else {
-            g.setColor(Player.getCurrentPlayer().getColor());
             g.setFont(new Font("Arial",Font.PLAIN,30));
             if (Player.getCurrentPlayer() == Player.getPlayer1())
                 g.drawString("Player 1's turn", 200,70);              
