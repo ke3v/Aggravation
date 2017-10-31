@@ -31,7 +31,7 @@ How to Get Clone from Repository
         {
             for (int zx = 0;zx<NUM_COLUMNS;zx++)
             {
-                board[zi][zx] = null;
+                board[zi][zx] = new Piece(Color.CYAN, true);
             }
         }
         winner = null;

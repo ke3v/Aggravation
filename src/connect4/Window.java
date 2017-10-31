@@ -7,7 +7,7 @@ package connect4;
 
 /**
  *
- * @author jeffreyyee
+ * @author beev_live
  */
 public class Window {
     private static final int XBORDER = 20;
@@ -32,8 +32,8 @@ How to Get Clone from Repository
 
 */    
     
-    static final int WINDOW_WIDTH = 2*(WINDOW_BORDER + XBORDER) + 600;
-    static final int WINDOW_HEIGHT = YTITLE + WINDOW_BORDER + 600;
+    static final int WINDOW_WIDTH = 2*(WINDOW_BORDER + XBORDER) + 666;
+    static final int WINDOW_HEIGHT = YTITLE + WINDOW_BORDER + 663;
     static int xsize = -1;
     static int ysize = -1;
 

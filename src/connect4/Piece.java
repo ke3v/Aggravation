@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class Piece {
     private Color color;
+    boolean rect = false;
 /*
 How to Add Code to Repository
 1: git add -A
@@ -21,6 +22,12 @@ How to Get Clone from Repository
     Piece(Color _color)
     {
         color = _color;
+        rect = false;
+    }
+    Piece(Color _color, boolean _rect)
+    {
+        color = _color;
+        rect = _rect;
     }
     public Color getColor()
     {
@@ -33,7 +40,11 @@ How to Get Clone from Repository
     public void draw(Graphics2D g,int row,int column,
     int xdelta,int ydelta) {
         g.setColor(color); 
+        if(!rect)
         g.fillOval(Window.getX(column*xdelta),
+        Window.getY(row*ydelta),xdelta,ydelta);
+        if(rect)
+        g.fillRect(Window.getX(column*xdelta),
         Window.getY(row*ydelta),xdelta,ydelta);
            
     }
