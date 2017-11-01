@@ -70,4 +70,15 @@ How to Get Clone from Repository
         
         currentTurn = players[count];
     }
-}
+    }   
+//    public static Player getOtherPlayer() {
+//        if (currentTurn == players[0])
+//            return (players[1]);
+//        return(players[0]);
+//    }   
+//    public static void switchTurn() {
+//        if (currentTurn == players[0])
+//            currentTurn = players[1];
+//        else
+//            currentTurn = players[0];
+//    }

@@ -60,8 +60,8 @@ How to Get Clone from Repository
         
         if (winner != null)
             return;
+ 
         
-        winner = checkWinWholeBoard();
     }
     
 
@@ -74,7 +74,7 @@ How to Get Clone from Repository
 
         return (null);
     }        
-    
+           
     public static void AddPiecePixel(int xpixel,int ypixel) {
         
         if (winner != null)
