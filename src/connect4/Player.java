@@ -25,8 +25,10 @@ How to Get Clone from Repository
 */    
     public static void Reset() {
         if (players[0] == null) {
-            players[0] = new Player(Color.black);
-            players[1] = new Player(Color.red);
+            players[0] = new Player(Color.green);
+            players[1] = new Player(Color.blue);
+            players[2] = new Player(Color.yellow);
+            players[3] = new Player(Color.red);            
         }
         currentTurn = players[0];
     }
@@ -50,6 +52,12 @@ How to Get Clone from Repository
     public static Player getPlayer2() {
         return (players[1]);
     }
+    public static Player getPlayer3() {
+        return (players[2]);
+    }
+    public static Player getPlayer4() {
+        return (players[3]);
+    }    
     public static Player getCurrentPlayer() {
         return(currentTurn);
     }   
