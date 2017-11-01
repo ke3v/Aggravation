@@ -24,6 +24,7 @@ How to Get Clone from Repository
     private static Piece board[][] = new Piece[NUM_ROWS][NUM_COLUMNS];
 
     private static Player winner = null;
+    private static int diceVal = 0;
     
     public static void Reset() {
  
@@ -35,6 +36,7 @@ How to Get Clone from Repository
             }
         }
         winner = null;
+        diceVal = (int)(Math.random()*6+1);
         
         board[0][0] = new Piece(Color.RED);
         board[0][1] = new Piece(Color.RED);
@@ -347,26 +349,7 @@ How to Get Clone from Repository
             zcol = (xpixel-Window.getX(0))/xdelta;
             zrow = (ypixel-Window.getY(0))/ydelta;
 
-            Color currentColor = Player.getCurrentPlayer().getColor();
-            if (board[zrow][zcol] != null && board[zrow][zcol].getColor() != currentColor)
-            {
-                int i=zrow-1;
-                for (;i >=0 && board[i][zcol] != null;i--) {
-                    board[i+1][zcol] =  board[i][zcol];
-                }
-                board[i+1][zcol] = null;
-                Player.switchTurn();
-
-            }
-            else
-            {
-                int i= NUM_ROWS-1;
-                for (;i>-1 && board[i][zcol] != null;i--);
-                if (i >= 0) {
-                    board[i][zcol] = new Piece(Player.getCurrentPlayer().getColor());
-                    Player.switchTurn();
-                }
-            }
+            
         }        
         
     }
@@ -377,7 +360,13 @@ How to Get Clone from Repository
         int xdelta = Window.getWidth2()/NUM_COLUMNS;
         
  //draw grid
-
+        g.setColor(Color.WHITE); 
+        g.fillRect(Window.getX(4*xdelta),
+        Window.getY(4*ydelta),xdelta,ydelta);
+        g.setColor(Color.black);
+        g.setFont(new Font("Arial",Font.PLAIN,30));
+        g.drawString("" + diceVal,Window.getX(4*xdelta)+30,
+        Window.getY(4*ydelta)+40);
                 
         for (int zi = 0;zi<NUM_ROWS;zi++)
         {
