@@ -47,7 +47,7 @@ How to Get Clone from Repository
                 }
 
                 if (e.BUTTON3 == e.getButton()) {
-
+                    reset();
                 }
                 repaint();
             }
@@ -76,7 +76,7 @@ How to Get Clone from Repository
                 } else if (e.VK_LEFT == e.getKeyCode()) {
                 } else if (e.VK_RIGHT == e.getKeyCode()) {
                 } else if (e.VK_ESCAPE == e.getKeyCode()) {
-                    reset();
+                    
                 }
                 repaint();
             }
