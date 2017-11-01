@@ -348,7 +348,8 @@ How to Get Clone from Repository
         {
             zcol = (xpixel-Window.getX(0))/xdelta;
             zrow = (ypixel-Window.getY(0))/ydelta;
-
+            if(zcol == 4 && zrow == 4)
+                diceVal = (int)(Math.random()*6+1);
             
         }        
         
