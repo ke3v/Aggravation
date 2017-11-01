@@ -8,6 +8,7 @@ public class Player {
     private static Player players[] = new Player[4];
     private int points;
     private Color color;
+    private static int count = 0;
 /*
 How to Add Code to Repository
 1: git add -A
@@ -60,16 +61,13 @@ How to Get Clone from Repository
     }    
     public static Player getCurrentPlayer() {
         return(currentTurn);
-    }   
-    public static Player getOtherPlayer() {
-        if (currentTurn == players[0])
-            return (players[1]);
-        return(players[0]);
-    }   
+    }      
     public static void switchTurn() {
-        if (currentTurn == players[0])
-            currentTurn = players[1];
-        else
-            currentTurn = players[0];
+        if(count<3)
+            count++;
+        if(count>3)
+            count = 0;
+        
+        currentTurn = players[count];
     }
 }
