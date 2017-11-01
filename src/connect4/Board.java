@@ -337,39 +337,7 @@ How to Get Clone from Repository
         int zcol = 0;
         int zrow = 0;
  
-        if (xpixel-Window.getX(0) < 0) {
-            for (int zi = 0;zi<NUM_ROWS;zi++)
-            {
-                int spot = 0;
-                for(int zx=0; zx<NUM_COLUMNS; zx++) {
-                    Piece curr = board[zi][zx];
-                    if(curr != null) {
-                        if(spot!=zx)
-                            board[zi][zx] = null;
-                        board[zi][spot++] = curr;
-                    }
-                    
-                }
-            }
-            Player.switchTurn();
-        }
         
-        if (xpixel-Window.getX(0) > xdelta*NUM_COLUMNS) {
-            for (int zi = 0;zi<NUM_ROWS;zi++)
-            {
-                int spot = NUM_COLUMNS-1;
-                for(int zx=NUM_COLUMNS-1; zx>=0; zx--) {
-                    Piece curr = board[zi][zx];
-                    if(curr != null) {
-                        if(spot!=zx)
-                            board[zi][zx] = null;
-                        board[zi][spot--] = curr;
-                    }
-                    
-                }
-            }
-            Player.switchTurn();
-        }
         
         if (xpixel-Window.getX(0) > 0 &&
             ypixel-Window.getY(0) > 0 &&
