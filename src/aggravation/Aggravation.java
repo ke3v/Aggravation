@@ -1,5 +1,5 @@
 
-package connect4;
+package aggravation;
 
 import java.io.*;
 import java.awt.*;
@@ -7,14 +7,14 @@ import java.awt.geom.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Connect4 extends JFrame implements Runnable {
+public class Aggravation extends JFrame implements Runnable {
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
 
 
     public static void main(String[] args) {
-        Connect4 frame = new Connect4();
+        Aggravation frame = new Aggravation();
         frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -34,7 +34,7 @@ How to Get Clone from Repository
 
 
 */
-    public Connect4() {
+    public Aggravation() {
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
 

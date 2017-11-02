@@ -1,4 +1,4 @@
-package connect4;
+package aggravation;
 import java.awt.*;
 
 public class Piece {
