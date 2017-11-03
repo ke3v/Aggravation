@@ -118,7 +118,16 @@ How to Get Clone from Repository
             gOld.drawImage(image, 0, 0, null);
             return;
         }
-        
+        for (int zi=1;zi<Board.numRows;zi++)
+        {
+            g.drawLine(Window.getX(0) ,Window.getY(0)+zi*Window.getHeight2()/Board.numRows ,
+            Window.getX(Window.getWidth2()) ,Window.getY(0)+zi*Window.getHeight2()/Board.numRows );
+        }
+        for (int zi=1;zi<Board.numColumns;zi++)
+        {
+            g.drawLine(Window.getX(0)+zi*Window.getWidth2()/Board.numColumns ,Window.getY(0) ,
+            Window.getX(0)+zi*Window.getWidth2()/Board.numColumns,Window.getY(Window.getHeight2())  );
+        }        
               
         Board.Draw(g);
 

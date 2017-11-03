@@ -56,6 +56,39 @@ How to Get Clone from Repository
 
     }
     
+    
+    
+
+    static final int numRows = 9;
+    static final int numColumns = 9;
+    
+
+    static final int PATH = 0;
+    static final int WALL = 1;
+
+    
+    
+    static int board2[][] = new int[numRows][numColumns];
+    static int board1[][] = {
+{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
+{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
+{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
+{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
+
+    };
+       
+    
+    
+    
+    
+    
+    
+    
+    
     public static void CheckWin() {
         
         if (winner != null)
@@ -108,9 +141,40 @@ How to Get Clone from Repository
         int xdelta = Window.getWidth2()/NUM_COLUMNS;
         
  //draw grid
+ // Middle Popper
         g.setColor(Color.WHITE); 
         g.fillRect(Window.getX(4*xdelta),
         Window.getY(4*ydelta),xdelta,ydelta);
+//Top Row        
+        g.fillRect(Window.getX(2*xdelta),
+        Window.getY(0*ydelta),xdelta * 5,ydelta);          
+//Bottom Row
+        g.fillRect(Window.getX(2*xdelta),
+        Window.getY(8*ydelta),xdelta * 5,ydelta);                
+//Left Row        
+        g.fillRect(Window.getX(0*xdelta),
+        Window.getY(2*ydelta),xdelta,ydelta * 5);         
+//Right Row
+        g.fillRect(Window.getX(8*xdelta),
+        Window.getY(2*ydelta),xdelta,ydelta * 5);        
+//TopLeft Corner        
+        g.fillRect(Window.getX(1*xdelta),
+        Window.getY(1*ydelta),xdelta,ydelta);
+//TopRight Corner
+        g.fillRect(Window.getX(7*xdelta),
+        Window.getY(1*ydelta),xdelta,ydelta);
+//BottomRight Corner        
+        g.fillRect(Window.getX(7*xdelta),
+        Window.getY(7*ydelta),xdelta,ydelta);
+//BottemLeft Corner
+        g.fillRect(Window.getX(1*xdelta),
+        Window.getY(7*ydelta),xdelta,ydelta);
+
+
+
+
+
+        
         g.setColor(Color.black);
         g.setFont(new Font("Arial",Font.PLAIN,30));
         g.drawString("" + diceVal,Window.getX(4*xdelta)+30,
