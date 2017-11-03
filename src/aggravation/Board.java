@@ -128,8 +128,10 @@ How to Get Clone from Repository
         {
             zcol = (xpixel-Window.getX(0))/xdelta;
             zrow = (ypixel-Window.getY(0))/ydelta;
-            if(zcol == 4 && zrow == 4)
+            if(zcol == 4 && zrow == 4) {
                 diceVal = (int)(Math.random()*6+1);
+                Player.switchTurn();
+            }
             
         }        
         
@@ -203,9 +205,13 @@ How to Get Clone from Repository
         else {
             g.setFont(new Font("Arial",Font.PLAIN,30));
             if (Player.getCurrentPlayer() == Player.getPlayer1())
-                g.drawString("Player 1's turn", 200,70);              
-            else
-                g.drawString("Player 2's turn", 200,70);              
+                g.drawString("Green's turn", 200,70);              
+             if(Player.getCurrentPlayer() == Player.getPlayer2())
+                g.drawString("Blue's turn", 200,70); 
+             if(Player.getCurrentPlayer() == Player.getPlayer3())
+                g.drawString("Yellow's turn", 200,70); 
+             if(Player.getCurrentPlayer() == Player.getPlayer4())
+                g.drawString("Red's turn", 200,70); 
         }
         
     }

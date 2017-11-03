@@ -63,9 +63,9 @@ How to Get Clone from Repository
         return(currentTurn);
     }      
     public static void switchTurn() {
-        if(count<3)
-            count++;
-        if(count>3)
+        count++;
+        
+        if(count > 3)
             count = 0;
         
         currentTurn = players[count];
