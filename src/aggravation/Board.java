@@ -205,13 +205,13 @@ How to Get Clone from Repository
         else {
             g.setFont(new Font("Arial",Font.PLAIN,30));
             if (Player.getCurrentPlayer() == Player.getPlayer1())
-                g.drawString("Green's turn", 200,70);              
+                g.drawString("Green's Turn", 200,70);              
              if(Player.getCurrentPlayer() == Player.getPlayer2())
-                g.drawString("Blue's turn", 200,70); 
+                g.drawString("Blue's Turn", 200,70); 
              if(Player.getCurrentPlayer() == Player.getPlayer3())
-                g.drawString("Yellow's turn", 200,70); 
+                g.drawString("Yellow's Turn", 200,70); 
              if(Player.getCurrentPlayer() == Player.getPlayer4())
-                g.drawString("Red's turn", 200,70); 
+                g.drawString("Red's Turn", 200,70); 
         }
         
     }
