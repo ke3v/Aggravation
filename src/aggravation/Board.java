@@ -59,27 +59,27 @@ How to Get Clone from Repository
     
     
 
-    static final int numRows = 9;
-    static final int numColumns = 9;
-    
-
-    static final int PATH = 0;
-    static final int WALL = 1;
-
-    
-    
-    static int board2[][] = new int[numRows][numColumns];
-    static int board1[][] = {
-{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
-{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
-{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
-{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
-
-    };
+//    static final int numRows = 9;
+//    static final int numColumns = 9;
+//    
+//
+//    static final int PATH = 0;
+//    static final int WALL = 1;
+//
+//    
+//    
+//    static int board2[][] = new int[numRows][numColumns];
+//    static int board1[][] = {
+//{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
+//{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
+//{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+//{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+//{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+//{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+//{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
+//{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
+//
+//    };
        
     
     
