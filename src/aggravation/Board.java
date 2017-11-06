@@ -1,4 +1,3 @@
-
 package aggravation;
 import java.awt.*;
 
@@ -61,25 +60,25 @@ How to Get Clone from Repository
 
     static final int numRows = 9;
     static final int numColumns = 9;
-//    
-//
-//    static final int PATH = 0;
-//    static final int WALL = 1;
-//
-//    
-//    
-//    static int board2[][] = new int[numRows][numColumns];
-//    static int board1[][] = {
-//{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
-//{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
-//{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-//{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-//{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-//{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-//{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
-//{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
-//
-//    };
+    
+
+    static final int PATH = 0;
+    static final int WALL = 1;
+
+    
+    
+    static int board2[][] = new int[numRows][numColumns];
+    static int board1[][] = {
+{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
+{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
+{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
+{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
+{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
+
+    };
        
     
     
@@ -130,7 +129,6 @@ How to Get Clone from Repository
             zrow = (ypixel-Window.getY(0))/ydelta;
             if(zcol == 4 && zrow == 4) {
                 diceVal = (int)(Math.random()*6+1);
-                Player.switchTurn();
             }
             
         }        
@@ -178,6 +176,42 @@ How to Get Clone from Repository
 
         
         g.setColor(Color.black);
+        if (winner == Player.getPlayer1()) {
+            g.setFont(new Font("Arial",Font.PLAIN,30));
+            g.drawString("Player 1 has Won", 200,70);              
+        }
+        else if (winner == Player.getPlayer2()) {
+            g.setFont(new Font("Arial",Font.PLAIN,30));
+            g.drawString("Player 2 has Won", 200,70);              
+        }
+        else {
+            g.setFont(new Font("Arial",Font.PLAIN,30));
+            if (Player.getCurrentPlayer() == Player.getPlayer1()) {
+                g.drawString("Green's turn", 200,70);
+                for (int zi = 0;zi<NUM_ROWS;zi++)
+                {
+                    for (int zx = 0;zx<NUM_COLUMNS;zx++)
+                    {
+                        if (board[zi][zx] != null)
+                        {
+                            g.setColor(Color.BLACK);
+                            if(board[zi][zx].getColor() == Color.green)
+                                g.fillRect(Window.getX(zx*xdelta),
+                                Window.getY(zi*ydelta),xdelta,ydelta);
+                        }
+                    }
+                }
+            }
+             if(Player.getCurrentPlayer() == Player.getPlayer2())
+                g.drawString("Blue's turn", 200,70); 
+             if(Player.getCurrentPlayer() == Player.getPlayer3())
+                g.drawString("Yellow's turn", 200,70); 
+             if(Player.getCurrentPlayer() == Player.getPlayer4())
+                g.drawString("Red's turn", 200,70); 
+             
+        }
+        
+        g.setColor(Color.black);
         g.setFont(new Font("Arial",Font.PLAIN,30));
         g.drawString("" + diceVal,Window.getX(4*xdelta)+30,
         Window.getY(4*ydelta)+40);
@@ -192,27 +226,6 @@ How to Get Clone from Repository
                 }
             }
         } 
-                     
-        g.setColor(Color.black);
-        if (winner == Player.getPlayer1()) {
-            g.setFont(new Font("Arial",Font.PLAIN,30));
-            g.drawString("Player 1 has Won", 200,70);              
-        }
-        else if (winner == Player.getPlayer2()) {
-            g.setFont(new Font("Arial",Font.PLAIN,30));
-            g.drawString("Player 2 has Won", 200,70);              
-        }
-        else {
-            g.setFont(new Font("Arial",Font.PLAIN,30));
-            if (Player.getCurrentPlayer() == Player.getPlayer1())
-                g.drawString("Green's Turn", 200,70);              
-             if(Player.getCurrentPlayer() == Player.getPlayer2())
-                g.drawString("Blue's Turn", 200,70); 
-             if(Player.getCurrentPlayer() == Player.getPlayer3())
-                g.drawString("Yellow's Turn", 200,70); 
-             if(Player.getCurrentPlayer() == Player.getPlayer4())
-                g.drawString("Red's Turn", 200,70); 
-        }
         
     }
 }
