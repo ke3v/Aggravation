@@ -59,8 +59,8 @@ How to Get Clone from Repository
     
     
 
-//    static final int numRows = 9;
-//    static final int numColumns = 9;
+    static final int numRows = 9;
+    static final int numColumns = 9;
 //    
 //
 //    static final int PATH = 0;
