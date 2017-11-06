@@ -8,7 +8,7 @@ public class Player {
     private static Player players[] = new Player[4];
     private int points;
     private Color color;
-    private static int count = 0;
+    private static int count;
 /*
 How to Add Code to Repository
 1: git add -A
@@ -31,7 +31,8 @@ How to Get Clone from Repository
             players[2] = new Player(Color.yellow);
             players[3] = new Player(Color.red);            
         }
-        currentTurn = players[0];
+        count = (int)(Math.random()*4);
+        currentTurn = players[count];
     }
     Player(Color _color) {
         points = 0;
@@ -70,7 +71,18 @@ How to Get Clone from Repository
         
         currentTurn = players[count];
     }
-    }   
+    public static Color getBGColor() {
+        if(currentTurn == players[0])
+            return(new Color(0,0,0));
+        if(currentTurn == players[1])
+            return(new Color(0,0,0));
+        if(currentTurn == players[2])
+            return(new Color(0,0,0));
+        if(currentTurn == players[3])
+            return(new Color(0,0,0));
+        return (new Color(0,0,0));
+    }
+}   
 //    public static Player getOtherPlayer() {
 //        if (currentTurn == players[0])
 //            return (players[1]);

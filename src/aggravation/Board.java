@@ -186,29 +186,27 @@ How to Get Clone from Repository
         }
         else {
             g.setFont(new Font("Arial",Font.PLAIN,30));
-            if (Player.getCurrentPlayer() == Player.getPlayer1()) {
+            if (Player.getCurrentPlayer() == Player.getPlayer1())
                 g.drawString("Green's turn", 200,70);
-                for (int zi = 0;zi<NUM_ROWS;zi++)
+            if(Player.getCurrentPlayer() == Player.getPlayer2())
+                g.drawString("Blue's turn", 200,70); 
+            if(Player.getCurrentPlayer() == Player.getPlayer3())
+                g.drawString("Yellow's turn", 200,70); 
+            if(Player.getCurrentPlayer() == Player.getPlayer4())
+                g.drawString("Red's turn", 200,70); 
+            for (int zi = 0;zi<NUM_ROWS;zi++)
+            {
+                for (int zx = 0;zx<NUM_COLUMNS;zx++)
                 {
-                    for (int zx = 0;zx<NUM_COLUMNS;zx++)
+                    if (board[zi][zx] != null)
                     {
-                        if (board[zi][zx] != null)
-                        {
-                            g.setColor(Color.BLACK);
-                            if(board[zi][zx].getColor() == Color.green)
-                                g.fillRect(Window.getX(zx*xdelta),
-                                Window.getY(zi*ydelta),xdelta,ydelta);
-                        }
+                        g.setColor(Player.getBGColor());
+                        if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor())
+                            g.fillRect(Window.getX(zx*xdelta),
+                            Window.getY(zi*ydelta),xdelta,ydelta);
                     }
                 }
-            }
-             if(Player.getCurrentPlayer() == Player.getPlayer2())
-                g.drawString("Blue's turn", 200,70); 
-             if(Player.getCurrentPlayer() == Player.getPlayer3())
-                g.drawString("Yellow's turn", 200,70); 
-             if(Player.getCurrentPlayer() == Player.getPlayer4())
-                g.drawString("Red's turn", 200,70); 
-             
+            } 
         }
         
         g.setColor(Color.black);
