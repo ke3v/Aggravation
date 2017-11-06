@@ -169,10 +169,32 @@ How to Get Clone from Repository
 //BottemLeft Corner
         g.fillRect(Window.getX(1*xdelta),
         Window.getY(7*ydelta),xdelta,ydelta);
+//Winning Area
+        g.fillRect(Window.getX(2*xdelta),
+        Window.getY(6*ydelta),xdelta,ydelta);        
+        g.fillRect(Window.getX(3*xdelta),
+        Window.getY(5*ydelta),xdelta,ydelta);
+        
+        
+        g.fillRect(Window.getX(2*xdelta),
+        Window.getY(2*ydelta),xdelta,ydelta);        
+        g.fillRect(Window.getX(3*xdelta),
+        Window.getY(3*ydelta),xdelta,ydelta); 
+        
+        g.fillRect(Window.getX(5*xdelta),
+        Window.getY(3*ydelta),xdelta,ydelta);        
+        g.fillRect(Window.getX(6*xdelta),
+        Window.getY(2*ydelta),xdelta,ydelta);   
+        
+        g.fillRect(Window.getX(2*xdelta),
+        Window.getY(6*ydelta),xdelta,ydelta);        
+        g.fillRect(Window.getX(3*xdelta),
+        Window.getY(5*ydelta),xdelta,ydelta);         
 
-
-
-
+        g.fillRect(Window.getX(5*xdelta),
+        Window.getY(5*ydelta),xdelta,ydelta);        
+        g.fillRect(Window.getX(6*xdelta),
+        Window.getY(6*ydelta),xdelta,ydelta); 
 
         
         g.setColor(Color.black);
