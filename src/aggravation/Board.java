@@ -24,6 +24,8 @@ How to Get Clone from Repository
 
     private static Player winner = null;
     private static int diceVal = 0;
+    private static boolean diceRolled = false;
+    private static boolean choosePiece = false;
     
     public static void Reset() {
  
@@ -36,6 +38,8 @@ How to Get Clone from Repository
         }
         winner = null;
         diceVal = (int)(Math.random()*6+1);
+        diceRolled = false;
+        choosePiece = false;
         
         board[0][0] = new Piece(Color.RED);
         board[0][1] = new Piece(Color.RED);
@@ -127,10 +131,17 @@ How to Get Clone from Repository
         {
             zcol = (xpixel-Window.getX(0))/xdelta;
             zrow = (ypixel-Window.getY(0))/ydelta;
-            if(zcol == 4 && zrow == 4) {
+            if(zcol == 4 && zrow == 4 && !diceRolled) {
                 diceVal = (int)(Math.random()*6+1);
+                diceRolled = true;
+                choosePiece = false;
             }
-            
+            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && diceRolled && !choosePiece) {
+                board[zrow][zcol] = null;
+                diceRolled = false;
+                choosePiece = false;
+                Player.switchTurn();
+            }
         }        
         
     }
@@ -223,7 +234,7 @@ How to Get Clone from Repository
                     if (board[zi][zx] != null)
                     {
                         g.setColor(Player.getBGColor());
-                        if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor())
+                        if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled)
                             g.fillRect(Window.getX(zx*xdelta),
                             Window.getY(zi*ydelta),xdelta,ydelta);
                     }
