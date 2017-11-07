@@ -82,6 +82,76 @@ How to Get Clone from Repository
             return(new Color(0,0,0));
         return (new Color(0,0,0));
     }
+    public static boolean checkStart(Player thePlayer, int row, int col) {
+        if(currentTurn == players[0]) {
+            if(Board.getBoard()[row][col]!=null && (Board.getBoard()[row][col] == Board.getBoard()[0][8] || 
+                Board.getBoard()[row][col] == Board.getBoard()[1][8] || Board.getBoard()[row][col] == Board.getBoard()[0][7])) {
+               return(true); 
+            }
+        }
+        else if(currentTurn == players[1]) {
+            if(Board.getBoard()[row][col]!=null && (Board.getBoard()[row][col] == Board.getBoard()[8][8] || 
+                Board.getBoard()[row][col] == Board.getBoard()[8][7] || Board.getBoard()[row][col] == Board.getBoard()[7][8])) {
+               return(true); 
+            }
+        }
+        else if(currentTurn == players[2]) {
+            if(Board.getBoard()[row][col]!=null && (Board.getBoard()[row][col] == Board.getBoard()[8][0] || 
+                Board.getBoard()[row][col] == Board.getBoard()[8][1] || Board.getBoard()[row][col] == Board.getBoard()[7][0])) {
+               return(true); 
+            }
+        }
+        else if(currentTurn == players[3]) {
+            if(Board.getBoard()[row][col]!=null && (Board.getBoard()[row][col] == Board.getBoard()[0][0] || 
+                Board.getBoard()[row][col] == Board.getBoard()[0][1] || Board.getBoard()[row][col] == Board.getBoard()[1][0])) {
+               return(true); 
+            }
+        }
+        
+        return(false);
+    }
+    
+    public static void placeStart(int diceVal) {
+        if(diceVal == 1 || diceVal == 6)
+        {
+            if(currentTurn == players[0])
+            {
+                Board.getBoard()[1][7] = new Piece(players[0].color);
+            }
+            else if(currentTurn == players[1])
+            {
+               Board.getBoard()[7][7] = new Piece(players[1].color);
+            }
+            else if(currentTurn == players[2])
+            {
+                Board.getBoard()[7][1] = new Piece(players[2].color);
+            }
+            else if(currentTurn == players[3])
+            {
+                Board.getBoard()[1][1] = new Piece(players[3].color);
+            }
+        }
+    }
+    public static Piece getFirstSpot() {
+        if(currentTurn == players[0])
+        {
+            return(Board.getBoard()[1][7]);
+        }
+        else if(currentTurn == players[1])
+        {
+           return(Board.getBoard()[7][7]);
+        }
+        else if(currentTurn == players[2])
+        {
+            return(Board.getBoard()[7][1]);
+        }
+        else if(currentTurn == players[3])
+        {
+            return(Board.getBoard()[1][1]);
+        }
+        
+        return(Board.getBoard()[0][0]);
+    }
 }   
 //    public static Player getOtherPlayer() {
 //        if (currentTurn == players[0])

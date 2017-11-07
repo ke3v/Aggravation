@@ -84,13 +84,9 @@ How to Get Clone from Repository
 
     };
        
-    
-    
-    
-    
-    
-    
-    
+    public static Piece[][] getBoard() {
+        return (board);
+    }
     
     public static void CheckWin() {
         
@@ -133,10 +129,21 @@ How to Get Clone from Repository
             zrow = (ypixel-Window.getY(0))/ydelta;
             if(zcol == 4 && zrow == 4 && !diceRolled) {
                 diceVal = (int)(Math.random()*6+1);
+                if(diceVal == 1 || diceVal == 6) {
                 diceRolled = true;
                 choosePiece = false;
+                }
+                else {
+                    diceRolled = false;
+                    choosePiece = false;
+                    Player.switchTurn();
+                }
             }
-            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && diceRolled && !choosePiece) {
+            // Starting Branch
+            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && 
+                diceRolled && !choosePiece && Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
+                
+                Player.placeStart(diceVal);
                 board[zrow][zcol] = null;
                 diceRolled = false;
                 choosePiece = false;
@@ -234,9 +241,10 @@ How to Get Clone from Repository
                     if (board[zi][zx] != null)
                     {
                         g.setColor(Player.getBGColor());
-                        if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled)
+                        if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled && (diceVal == 1 || diceVal == 6) && Player.getFirstSpot() == null)
                             g.fillRect(Window.getX(zx*xdelta),
                             Window.getY(zi*ydelta),xdelta,ydelta);
+                        
                     }
                 }
             } 
@@ -246,6 +254,7 @@ How to Get Clone from Repository
         g.setFont(new Font("Arial",Font.PLAIN,30));
         g.drawString("" + diceVal,Window.getX(4*xdelta)+30,
         Window.getY(4*ydelta)+40);
+        
                 
         for (int zi = 0;zi<NUM_ROWS;zi++)
         {
