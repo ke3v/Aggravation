@@ -127,9 +127,16 @@ How to Get Clone from Repository
         {
             g.drawLine(Window.getX(0)+zi*Window.getWidth2()/Board.numColumns ,Window.getY(0) ,
             Window.getX(0)+zi*Window.getWidth2()/Board.numColumns,Window.getY(Window.getHeight2())  );
-        }        
-              
+        }   
+             
         Board.Draw(g);
+        
+                
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+        g.drawString("Aggravation", 260, 575);
+        
+         
 
         gOld.drawImage(image, 0, 0, null);
     }
