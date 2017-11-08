@@ -149,6 +149,17 @@ How to Get Clone from Repository
                 choosePiece = false;
                 Player.switchTurn();
             }
+            
+            // Not Starting Branch
+            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && 
+                diceRolled && !choosePiece && !Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
+                
+                Player.placeStart(diceVal);
+                board[zrow][zcol] = null;
+                diceRolled = false;
+                choosePiece = false;
+                Player.switchTurn();
+            }
         }        
         
     }
@@ -241,10 +252,15 @@ How to Get Clone from Repository
                     if (board[zi][zx] != null)
                     {
                         g.setColor(Player.getBGColor());
-                        if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled && (diceVal == 1 || diceVal == 6) && Player.getFirstSpot() == null)
+                        if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled && (diceVal == 1 || diceVal == 6) && Player.getFirstSpot() == null) {
                             g.fillRect(Window.getX(zx*xdelta),
                             Window.getY(zi*ydelta),xdelta,ydelta);
-                        
+                        }
+                        else if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled && (diceVal == 1 || diceVal == 6) && Player.getFirstSpot() != null) {
+                            if(!Player.checkStart(Player.getCurrentPlayer(), zi, zx))
+                            g.fillRect(Window.getX(zx*xdelta),
+                            Window.getY(zi*ydelta),xdelta,ydelta);
+                        }
                     }
                 }
             } 
