@@ -141,7 +141,7 @@ How to Get Clone from Repository
             }
             // Starting Branch
             if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && 
-                diceRolled && !choosePiece && Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
+                diceRolled && !choosePiece && Player.getFirstSpot() == null && Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
                 
                 Player.placeStart(diceVal);
                 board[zrow][zcol] = null;
@@ -159,6 +159,7 @@ How to Get Clone from Repository
                 diceRolled = false;
                 choosePiece = false;
                 Player.switchTurn();
+                
             }
         }        
         
