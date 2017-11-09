@@ -65,7 +65,10 @@ How to Get Clone from Repository
     }    
     public static Player getCurrentPlayer() {
         return(currentTurn);
-    }      
+    }
+    public boolean getDirection() {
+        return (clockWise);
+    }
     public static void switchTurn() {
         count++;
         

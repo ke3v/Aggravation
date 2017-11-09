@@ -175,7 +175,17 @@ How to Get Clone from Repository
                 
                 if(diceRolled) {
                     Player.placeStart(diceVal);
-                    board[zrow][zcol] = null;
+                    int theDiceVal = diceVal;
+                    if(Player.getCurrentPlayer().getDirection()) 
+                    {
+                        
+                        board[zrow][zcol] = null;
+                    }
+                    else 
+                    {
+                        
+                        board[zrow][zcol] = null;
+                    }
                     diceRolled = false;
                     chosePiece = false;
                     Player.switchTurn();
