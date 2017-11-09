@@ -9,6 +9,7 @@ public class Player {
     private int points;
     private Color color;
     private static int count;
+    private boolean clockWise;
 /*
 How to Add Code to Repository
 1: git add -A
@@ -33,10 +34,12 @@ How to Get Clone from Repository
         }
         count = (int)(Math.random()*4);
         currentTurn = players[count];
+       
     }
     Player(Color _color) {
         points = 0;
         color = _color;
+        clockWise = ((int)(Math.random()*2) == 1);
     }
     public Color getColor() {
         return (color);
@@ -104,6 +107,35 @@ How to Get Clone from Repository
         else if(currentTurn == players[3]) {
             if(Board.getBoard()[row][col]!=null && (Board.getBoard()[row][col] == Board.getBoard()[0][0] || 
                 Board.getBoard()[row][col] == Board.getBoard()[0][1] || Board.getBoard()[row][col] == Board.getBoard()[1][0])) {
+               return(true); 
+            }
+        }
+        
+        return(false);
+    }
+    
+    public static boolean checkAllStart(Player thePlayer) {
+        if(currentTurn == players[0]) {
+            if((Board.getBoard()[0][8] != null && 
+                Board.getBoard()[1][8] != null &&  Board.getBoard()[0][7] != null)) {
+               return(true); 
+            }
+        }
+        else if(currentTurn == players[1]) {
+            if(Board.getBoard()[8][8] != null && 
+                Board.getBoard()[8][7] != null && Board.getBoard()[7][8] != null) {
+               return(true); 
+            }
+        }
+        else if(currentTurn == players[2]) {
+            if(Board.getBoard()[8][0] != null && 
+                Board.getBoard()[8][1] != null && Board.getBoard()[7][0] != null) {
+               return(true); 
+            }
+        }
+        else if(currentTurn == players[3]) {
+            if(Board.getBoard()[0][0] != null && 
+                Board.getBoard()[0][1] != null && Board.getBoard()[1][0] != null) {
                return(true); 
             }
         }

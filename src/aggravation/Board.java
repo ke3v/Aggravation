@@ -25,7 +25,7 @@ How to Get Clone from Repository
     private static Player winner = null;
     private static int diceVal = 0;
     private static boolean diceRolled = false;
-    private static boolean choosePiece = false;
+    private static boolean chosePiece = false;
     
     public static void Reset() {
  
@@ -39,7 +39,7 @@ How to Get Clone from Repository
         winner = null;
         diceVal = (int)(Math.random()*6+1);
         diceRolled = false;
-        choosePiece = false;
+        chosePiece = false;
         
         board[0][0] = new Piece(Color.RED);
         board[0][1] = new Piece(Color.RED);
@@ -129,36 +129,63 @@ How to Get Clone from Repository
             zrow = (ypixel-Window.getY(0))/ydelta;
             if(zcol == 4 && zrow == 4 && !diceRolled) {
                 diceVal = (int)(Math.random()*6+1);
-                if(diceVal == 1 || diceVal == 6) {
+                if(diceVal == 6) {
                 diceRolled = true;
-                choosePiece = false;
+                chosePiece = false;
+                }
+                else if(diceVal == 1) {
+                    diceRolled = true;
+                    chosePiece = false;
+                    
                 }
                 else {
-                    diceRolled = false;
-                    choosePiece = false;
-                    Player.switchTurn();
+                    if(Player.getFirstSpot() == null) {
+                        diceRolled = false;
+                        chosePiece = false;
+                        Player.switchTurn();
+                    }
+                    else {
+                        diceRolled = true;
+                        chosePiece = false;
+                    }
                 }
             }
             // Starting Branch
             if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && 
-                diceRolled && !choosePiece && Player.getFirstSpot() == null && Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
+                diceRolled && !chosePiece && Player.getFirstSpot() == null && Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
                 
                 Player.placeStart(diceVal);
                 board[zrow][zcol] = null;
                 diceRolled = false;
-                choosePiece = false;
-                Player.switchTurn();
+                
+                if(diceVal == 6) 
+                {
+                    
+                }
+                else if(diceVal != 6)
+                {
+                    chosePiece = false;
+                    Player.switchTurn();
+                }
             }
             
             // Not Starting Branch
             if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && 
-                diceRolled && !choosePiece && !Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
+                !chosePiece && !Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
                 
-                Player.placeStart(diceVal);
-                board[zrow][zcol] = null;
-                diceRolled = false;
-                choosePiece = false;
-                Player.switchTurn();
+                if(diceRolled) {
+                    Player.placeStart(diceVal);
+                    board[zrow][zcol] = null;
+                    diceRolled = false;
+                    chosePiece = false;
+                    Player.switchTurn();
+                }
+                else if(!diceRolled) {
+                    board[zrow][zcol] = null;
+                    diceRolled = false;
+                    chosePiece = false;
+                    Player.switchTurn();
+                }
                 
             }
         }        
@@ -228,6 +255,9 @@ How to Get Clone from Repository
 
         
         g.setColor(Color.black);
+        g.setFont(new Font("Arial",Font.PLAIN,30));
+        if(!diceRolled)
+            g.drawString("Roll dice guy", 200,100); 
         if (winner == Player.getPlayer1()) {
             g.setFont(new Font("Arial",Font.PLAIN,30));
             g.drawString("Player 1 has Won", 200,70);              
@@ -257,7 +287,7 @@ How to Get Clone from Repository
                             g.fillRect(Window.getX(zx*xdelta),
                             Window.getY(zi*ydelta),xdelta,ydelta);
                         }
-                        else if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled && (diceVal == 1 || diceVal == 6) && Player.getFirstSpot() != null) {
+                        else if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled  && Player.getFirstSpot() != null) {
                             if(!Player.checkStart(Player.getCurrentPlayer(), zi, zx))
                             g.fillRect(Window.getX(zx*xdelta),
                             Window.getY(zi*ydelta),xdelta,ydelta);
