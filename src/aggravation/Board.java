@@ -208,47 +208,63 @@ How to Get Clone from Repository
         
         while (theDiceVal > 0)
         {
-            //if (board[row][col] != null)
+            // RED CORNER
+            for (int i = 2; i <= 6; i++)
             {
-                // RED CORNER
-                for (int i = 2; i <= 6; i++)
+                if(board[row][col] != null && board[row][col] == board[row][i])
                 {
-                    if(board[row][col] == board[row][i])
-                    {
-                        xdir = 1;
-                        ydir = 0;
-                    }
-                }
-                if (board[row][col] == board[2][0] || board[row][col] == board[1][1])
-                {
-                    xdir = 1;
-                    ydir = -1;
-                }
-                if (board[row][col] == board[0][2]){
                     xdir = 1;
                     ydir = 0;
                 }
+            }
+            if (board[row][col] == board[2][0] || board[row][col] == board[1][1])
+            {
+                xdir = 1;
+                ydir = -1;
+            }
+            if (board[row][col] == board[0][2]){
+                xdir = 1;
+                ydir = 0;
+            }
 
-                // GREEN CORNER
-                for (int i = 2; i <= 6; i++)
+            // GREEN CORNER
+            for (int i = 2; i <= 6; i++)
+            {
+                if(board[row][col] == board[i][col])
                 {
-                    if(board[row][col] == board[i][col])
-                    {
-                        xdir = 0;
-                        ydir = 1;
-                    }
-                }
-                if (board[row][col] == board[0][6] || board[row][col] == board[1][7])
-                {
-                    xdir = 1;
-                    ydir = 1;
-                }
-                if (board[row][col] == board[2][8]){
                     xdir = 0;
                     ydir = 1;
                 }
             }
+            if (board[row][col] == board[0][6] || board[row][col] == board[1][7])
+            {
+                xdir = 1;
+                ydir = 1;
+            }
+            if (board[row][col] == board[2][8]){
+                xdir = 0;
+                ydir = 1;
+            }
             
+            // BLUE CORNER
+            for (int i = 6; i >= 2; i--)
+            {
+                if(board[row][col] == board[row][i])
+                {
+                    xdir = -1;
+                    ydir = 0;
+                }
+            }
+            if (board[row][col] == board[6][8] || board[row][col] == board[7][7])
+            {
+                xdir = -1;
+                ydir = 1;
+            }
+            if (board[row][col] == board[8][6]){
+                xdir = -1;
+                ydir = 0;
+            }
+
             col += xdir;
             row += ydir;
             //board[row][col] = new Piece(Player.getCurrentPlayer().getColor());
