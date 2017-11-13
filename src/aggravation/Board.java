@@ -171,15 +171,13 @@ How to Get Clone from Repository
             
             // Not Starting Branch
             if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && 
-                !chosePiece && !Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
+                !chosePiece) {
                 
                 if(diceRolled) {
-                    Player.placeStart(diceVal);
                     int theDiceVal = diceVal;
                     if(Player.getCurrentPlayer().getDirection()) 
                     {
-                        
-                        board[zrow][zcol] = null;
+                        Move(zrow,zcol);
                     }
                     else 
                     {
@@ -200,6 +198,76 @@ How to Get Clone from Repository
             }
         }        
         
+    }
+    public static void Move(int row, int col) {
+        int theDiceVal = diceVal;
+        int xdir = 0;
+        int ydir = 0;
+        int zrow = row;
+        int zcol = col;
+        
+        while (theDiceVal > 0)
+        {
+            //if (board[row][col] != null)
+            {
+                // RED CORNER
+                for (int i = 2; i <= 6; i++)
+                {
+                    if(board[row][col] == board[row][i])
+                    {
+                        xdir = 1;
+                        ydir = 0;
+                    }
+                }
+                if (board[row][col] == board[2][0] || board[row][col] == board[1][1])
+                {
+                    xdir = 1;
+                    ydir = -1;
+                }
+                if (board[row][col] == board[0][2]){
+                    xdir = 1;
+                    ydir = 0;
+                }
+
+                // GREEN CORNER
+                for (int i = 2; i <= 6; i++)
+                {
+                    if(board[row][col] == board[i][col])
+                    {
+                        xdir = 0;
+                        ydir = 1;
+                    }
+                }
+                if (board[row][col] == board[0][6] || board[row][col] == board[1][7])
+                {
+                    xdir = 1;
+                    ydir = 1;
+                }
+                if (board[row][col] == board[2][8]){
+                    xdir = 0;
+                    ydir = 1;
+                }
+            }
+            
+            col += xdir;
+            row += ydir;
+            //board[row][col] = new Piece(Player.getCurrentPlayer().getColor());
+            theDiceVal--;
+        }
+        board[row][col] = new Piece(Player.getCurrentPlayer().getColor());
+        board[zrow][zcol] = null;
+        
+        
+        
+        
+        
+//        while(theDiceVal > 0) {
+//            if(board[zrow][zcol] != null && (board[zrow][zcol] == board[2][0] || board[zrow][zcol] == board[1][1] || board[zrow][zcol] == board[0][2])) {
+//                if(Player.getCurrentPlayer().getDirection()) {
+//                    
+//                }
+//            }
+//        }
     }
 
     public static void Draw(Graphics2D g) {

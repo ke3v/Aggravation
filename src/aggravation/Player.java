@@ -39,7 +39,8 @@ How to Get Clone from Repository
     Player(Color _color) {
         points = 0;
         color = _color;
-        clockWise = ((int)(Math.random()*2) == 1);
+//        clockWise = ((int)(Math.random()*2) == 1);
+clockWise = true;
     }
     public Color getColor() {
         return (color);
