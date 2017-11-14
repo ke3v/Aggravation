@@ -70,19 +70,7 @@ How to Get Clone from Repository
     static final int WALL = 1;
 
     
-    
-    static int board2[][] = new int[numRows][numColumns];
-    static int board1[][] = {
-{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
-{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
-{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-{PATH,WALL,WALL,WALL,WALL,WALL,WALL,WALL,PATH},
-{WALL,PATH,WALL,WALL,WALL,WALL,WALL,PATH,WALL},
-{WALL,WALL,PATH,PATH,PATH,PATH,PATH,WALL,WALL},
 
-    };
        
     public static Piece[][] getBoard() {
         return (board);
@@ -205,98 +193,162 @@ How to Get Clone from Repository
         int ydir = 0;
         int zrow = row;
         int zcol = col;
+        boolean notMoved = true;
+        System.out.println("spot " + row + "," + col);
         
         while (theDiceVal > 0)
         {
+            notMoved = true;
             // RED CORNER
-            for (int i = 2; i <= 6; i++)
+            if (row == 2 && col == 0)
+            {
+                System.out.println("kms");
+                row = 1;
+                col = 1;
+            }
+            else if (row == 1 && col == 1){
+                
+                row = 0;
+                col = 2;
+            }
+            else if (row == 0 && col == 2){
+                
+                row = 0;
+                col = 3;
+            }
+            else if (row == 0 && col == 3){
+                
+                row = 0;
+                col = 4;
+            }
+            else if (row == 0 && col == 4){
+                
+                row = 0;
+                col = 5;
+            }
+            else if (row == 0 && col == 5){
+                
+                row = 0;
+                col = 6;
+            }
+            
+            // GREEN CORNER
+            else if (row == 0 && col == 6)
             {
                 
-                if(board[row][col] == board[0][i])
-                {
-                    xdir = 1;
-                    ydir = 0;
-                }
+                row = 1;
+                col = 7;
             }
-            if (board[row][col] == board[2][0] || board[row][col] == board[1][1])
-            {
-                xdir = 1;
-                ydir = -1;
+            else if (row == 1 && col == 7){
+                
+                row = 2;
+                col = 8;
             }
-            if (board[row][col] == board[0][2]){
-                xdir = 1;
-                ydir = 0;
+            else if (row == 2 && col == 8){
+                
+                row = 3;
+                col = 8;
             }
-
-            // GREEN CORNER
-            for (int i = 2; i <= 6; i++)
-            {
-                if(board[row][col] != null && board[row][col] == board[i][8])
-                {
-                    xdir = 0;
-                    ydir = 1;
-                }
+            else if (row == 3 && col == 8){
+                
+                row = 4;
+                col = 8;
             }
-            if (board[row][col] == board[0][6] || board[row][col] == board[1][7])
-            {
-                xdir = 1;
-                ydir = 1;
-            }
-            if (board[row][col] == board[2][8]){
-                xdir = 0;
-                ydir = 1;
+            else if (row == 4 && col == 8){
+                
+                row = 5;
+                col = 8;
             }
             
             // BLUE CORNER
-            for (int i = 6; i > 2; i--)
+            else if (row == 5 && col == 8)
             {
-                if(board[row][col] != null && board[row][col] == board[8][i])
-                {
-                    xdir = -1;
-                    ydir = 0;
-                }
+                
+                row = 6;
+                col = 8;
             }
-            if (board[row][col] == board[6][8] || board[row][col] == board[7][7])
+            else if (row == 6 && col == 8)
             {
-                xdir = -1;
-                ydir = 1;
+                
+                row = 7;
+                col = 7;
             }
-            if (board[row][col] == board[8][6]){
-                xdir = -1;
-                ydir = 0;
+            else if (row == 7 && col == 7){
+                
+                row = 8;
+                col = 6;
+            }
+            else if (row == 8 && col == 6){
+                
+                row = 8;
+                col = 5;
+            }
+            else if (row == 8 && col == 5){
+                
+                row = 8;
+                col = 4;
+            }
+            else if (row == 8 && col == 4){
+                
+                row = 8;
+                col = 3;
+            }
+            else if (row == 8 && col == 3){
+                
+                row = 8;
+                col = 2;
             }
             
             // YELLOW CORNER
-            for (int i = 6; i > 2; i--)
+            else if (row == 8 && col == 2)
             {
-                if(board[row][col] != null && board[row][col] == board[i][0])
-                {
-                    xdir = 0;
-                    ydir = -1;
-                }
+                
+                row = 7;
+                col = 1;
             }
-            if (board[row][col] == board[8][2] || board[row][col] == board[7][1])
-            {
-                xdir = -1;
-                ydir = -1;
+            else if (row == 7 && col == 1){
+                
+                row = 6;
+                col = 0;
             }
-            else if (board[row][col] == board[6][0]){
-                xdir = 0;
-                ydir = -1;
-                System.out.println("yellow corner");
+            else if (row == 6 && col == 0){
+                
+                row = 5;
+                col = 0;
             }
-            
-
-            col += xdir;
-            row += ydir;
+            else if (row == 5 && col == 0){
+                
+                row = 4;
+                col = 0;
+            }
+            else if (row == 4 && col == 0){
+                
+                row = 3;
+                col = 0;
+            }
+            else if (row == 3 && col == 0){
+                
+                row = 2;
+                col = 0;
+            }
             //board[row][col] = new Piece(Player.getCurrentPlayer().getColor());
             theDiceVal--;
-            System.out.println(row + "," + col);
         }
-        
+        System.out.println(row + " , " + col);
         board[row][col] = new Piece(Player.getCurrentPlayer().getColor());
         board[zrow][zcol] = null;
         
+        
+        
+        
+        
+//        while(theDiceVal > 0) {
+//            if(board[zrow][zcol] != null && (board[zrow][zcol] == board[2][0] || board[zrow][zcol] == board[1][1] || board[zrow][zcol] == board[0][2])) {
+//                if(Player.getCurrentPlayer().getDirection()) {
+//                    
+//                }
+//            }
+//        }
     }
 
     public static void Draw(Graphics2D g) {
