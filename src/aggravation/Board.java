@@ -211,7 +211,8 @@ How to Get Clone from Repository
             // RED CORNER
             for (int i = 2; i <= 6; i++)
             {
-                if(board[row][col] != null && board[row][col] == board[row][i])
+                
+                if(board[row][col] == board[0][i])
                 {
                     xdir = 1;
                     ydir = 0;
@@ -230,7 +231,7 @@ How to Get Clone from Repository
             // GREEN CORNER
             for (int i = 2; i <= 6; i++)
             {
-                if(board[row][col] == board[i][col])
+                if(board[row][col] != null && board[row][col] == board[i][8])
                 {
                     xdir = 0;
                     ydir = 1;
@@ -247,9 +248,9 @@ How to Get Clone from Repository
             }
             
             // BLUE CORNER
-            for (int i = 6; i >= 2; i--)
+            for (int i = 6; i > 2; i--)
             {
-                if(board[row][col] == board[row][i])
+                if(board[row][col] != null && board[row][col] == board[8][i])
                 {
                     xdir = -1;
                     ydir = 0;
@@ -264,26 +265,38 @@ How to Get Clone from Repository
                 xdir = -1;
                 ydir = 0;
             }
+            
+            // YELLOW CORNER
+            for (int i = 6; i > 2; i--)
+            {
+                if(board[row][col] != null && board[row][col] == board[i][0])
+                {
+                    xdir = 0;
+                    ydir = -1;
+                }
+            }
+            if (board[row][col] == board[8][2] || board[row][col] == board[7][1])
+            {
+                xdir = -1;
+                ydir = -1;
+            }
+            else if (board[row][col] == board[6][0]){
+                xdir = 0;
+                ydir = -1;
+                System.out.println("yellow corner");
+            }
+            
 
             col += xdir;
             row += ydir;
             //board[row][col] = new Piece(Player.getCurrentPlayer().getColor());
             theDiceVal--;
+            System.out.println(row + "," + col);
         }
+        
         board[row][col] = new Piece(Player.getCurrentPlayer().getColor());
         board[zrow][zcol] = null;
         
-        
-        
-        
-        
-//        while(theDiceVal > 0) {
-//            if(board[zrow][zcol] != null && (board[zrow][zcol] == board[2][0] || board[zrow][zcol] == board[1][1] || board[zrow][zcol] == board[0][2])) {
-//                if(Player.getCurrentPlayer().getDirection()) {
-//                    
-//                }
-//            }
-//        }
     }
 
     public static void Draw(Graphics2D g) {
