@@ -127,7 +127,7 @@ How to Get Clone from Repository
                     
                 }
                 else {
-                    if(Player.getFirstSpot() == null) {
+                    if(Player.checkAllStart(Player.getCurrentPlayer())) {
                         diceRolled = false;
                         chosePiece = false;
                         Player.switchTurn();
@@ -140,21 +140,29 @@ How to Get Clone from Repository
             }
             // Starting Branch
             if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && 
-                diceRolled && !chosePiece && Player.getFirstSpot() == null && Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
+                diceRolled && !chosePiece && Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
                 
-                Player.placeStart(diceVal);
-                board[zrow][zcol] = null;
-                diceRolled = false;
                 
-                if(diceVal == 6) 
-                {
-                    
+                if(Player.getFirstSpot() == null){
+                    Player.placeStart(diceVal);
+                    board[zrow][zcol] = null;
+                    diceRolled = false;
+
+                    if(diceVal == 6 ) 
+                    {
+
+                    }
+                    else if(diceVal != 6)
+                    {
+                        chosePiece = false;
+                        Player.switchTurn();
+                    }
                 }
-                else if(diceVal != 6)
-                {
-                    chosePiece = false;
+                else{
                     Player.switchTurn();
+                    diceRolled = false;
                 }
+            
             }
             
             // Not Starting Branch
@@ -446,7 +454,7 @@ How to Get Clone from Repository
                             g.fillRect(Window.getX(zx*xdelta),
                             Window.getY(zi*ydelta),xdelta,ydelta);
                         }
-                        else if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled  && Player.getFirstSpot() != null) {
+                        else if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled) {
                             if(!Player.checkStart(Player.getCurrentPlayer(), zi, zx))
                             g.fillRect(Window.getX(zx*xdelta),
                             Window.getY(zi*ydelta),xdelta,ydelta);
