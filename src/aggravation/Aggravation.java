@@ -104,13 +104,13 @@ How to Get Clone from Repository
         }
 //fill background
         
-        g.setColor(Color.cyan);
+        g.setColor(Color.gray);
         g.fillRect(0, 0, Window.xsize, Window.ysize);
 
         int x[] = {Window.getX(0), Window.getX(Window.getWidth2()), Window.getX(Window.getWidth2()), Window.getX(0), Window.getX(0)};
         int y[] = {Window.getY(0), Window.getY(0), Window.getY(Window.getHeight2()), Window.getY(Window.getHeight2()), Window.getY(0)};
 //fill border
-        g.setColor(Color.cyan);
+        g.setColor(Color.gray);
         g.fillPolygon(x, y, 4);
 // draw border
        

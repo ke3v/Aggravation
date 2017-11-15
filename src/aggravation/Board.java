@@ -174,6 +174,8 @@ How to Get Clone from Repository
                     if(Player.getCurrentPlayer().getDirection()) 
                     {
                         Move(zrow,zcol);
+                        
+                        
                     }
                     else 
                     {
@@ -203,7 +205,7 @@ How to Get Clone from Repository
         int zcol = col;
         boolean notMoved = true;
         System.out.println("spot " + row + "," + col);
-        
+    
         while (theDiceVal > 0)
         {
             notMoved = true;
@@ -343,8 +345,28 @@ How to Get Clone from Repository
             theDiceVal--;
         }
         System.out.println(row + " , " + col);
-        board[row][col] = new Piece(Player.getCurrentPlayer().getColor());
+        if(board[zrow][zcol].getPoints() + diceVal >= 24)
+        {
+            if(board[row][col].getColor() == Color.RED){
+                if(board[2][2] == null){
+                    board[row][col] = board[2][2];
+                }
+                else if(board[3][3] == null){
+                    board[row][col] = board[3][3];
+                }
+                
+                
+                
+                
+            }
+            
+            
+        }
+        else{
+        board[row][col] = new Piece(Player.getCurrentPlayer().getColor(), board[zrow][zcol].getPoints() + diceVal);
         board[zrow][zcol] = null;
+        System.out.println(board[row][col].getPoints());
+        }
         
         
         

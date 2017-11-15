@@ -4,6 +4,7 @@ import java.awt.*;
 public class Piece {
     private Color color;
     boolean rect = false;
+    private int points = 0;
 /*
 How to Add Code to Repository
 1: git add -A
@@ -24,6 +25,18 @@ How to Get Clone from Repository
         color = _color;
         rect = false;
     }
+    Piece(Color _color, int _points)
+    {
+        color = _color;
+        points = _points;
+    }
+    public void addPoints(int value) {
+        points += value;
+    }
+    public int getPoints() {
+        return (points);
+    }
+    
     public Color getColor()
     {
         return (color);
