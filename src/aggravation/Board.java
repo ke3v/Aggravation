@@ -117,9 +117,11 @@ How to Get Clone from Repository
             zrow = (ypixel-Window.getY(0))/ydelta;
             if(zcol == 4 && zrow == 4 && !diceRolled) {
                 diceVal = (int)(Math.random()*6+1);
-                if(diceVal == 6) {
-                diceRolled = true;
-                chosePiece = false;
+                if(Player.checkAllStart(Player.getCurrentPlayer()) && Player.getFirstSpot() != null) 
+                    Player.switchTurn();
+                else if(diceVal == 6) {
+                    diceRolled = true;
+                    chosePiece = false;
                 }
                 else if(diceVal == 1) {
                     diceRolled = true;
@@ -137,9 +139,10 @@ How to Get Clone from Repository
                         chosePiece = false;
                     }
                 }
+                
             }
             // Starting Branch
-            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && 
+            if((diceVal == 1 || diceVal == 6) && board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && 
                 diceRolled && !chosePiece && Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
                 
                 
@@ -158,16 +161,17 @@ How to Get Clone from Repository
                         Player.switchTurn();
                     }
                 }
-                else{
-                    Player.switchTurn();
-                    diceRolled = false;
-                }
+//                else
+//                {
+//                    Player.switchTurn();
+//                    diceRolled = false;
+//                }
             
             }
             
             // Not Starting Branch
             if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Player.getCurrentPlayer().getColor() && 
-                !chosePiece) {
+                !chosePiece && !Player.checkStart(Player.getCurrentPlayer(), zrow, zcol)) {
                 
                 if(diceRolled) {
                     int theDiceVal = diceVal;
@@ -180,14 +184,14 @@ How to Get Clone from Repository
                     else 
                     {
                         
-                        board[zrow][zcol] = null;
+
                     }
                     diceRolled = false;
                     chosePiece = false;
                     Player.switchTurn();
                 }
                 else if(!diceRolled) {
-                    board[zrow][zcol] = null;
+
                     diceRolled = false;
                     chosePiece = false;
                     Player.switchTurn();
@@ -212,7 +216,6 @@ How to Get Clone from Repository
             // RED CORNER
             if (row == 2 && col == 0)
             {
-                System.out.println("kms");
                 row = 1;
                 col = 1;
             }
@@ -363,9 +366,13 @@ How to Get Clone from Repository
             
         }
         else{
+            
         board[row][col] = new Piece(Player.getCurrentPlayer().getColor(), board[zrow][zcol].getPoints() + diceVal);
         board[zrow][zcol] = null;
+        if(board[row][col] != null)
+            {
         System.out.println(board[row][col].getPoints());
+            }
         }
         
         
