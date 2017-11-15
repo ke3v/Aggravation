@@ -348,22 +348,68 @@ How to Get Clone from Repository
             theDiceVal--;
         }
         System.out.println(row + " , " + col);
-        if(board[zrow][zcol].getPoints() + diceVal >= 24)
+         if(board[zrow][zcol].getPoints() + diceVal >= 24)
         {
-            if(board[row][col].getColor() == Color.RED){
-                if(board[2][2] == null){
-                    board[row][col] = board[2][2];
+        //RED WIN      
+            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.RED){               
+                if(board[2][2] == null){                
+                    board[2][2] = new Piece(Color.RED);
+                    board[zrow][zcol] = null;
                 }
                 else if(board[3][3] == null){
-                    board[row][col] = board[3][3];
+                   board[3][3]= new Piece(Color.RED);
+                    board[zrow][zcol] = null;                   
                 }
-                
-                
-                
-                
+                else if(board[4][4] == null){
+                    board[4][4]= new Piece(Color.RED);
+                    board[zrow][zcol] = null;  
+                }
             }
-            
-            
+            //BLUE WIN
+                if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.BLUE){
+                    if(board[6][6] == null){
+                        board[6][6] = new Piece(Color.BLUE);
+                        board[zrow][zcol] = null;  
+                    }
+                    else if(board[5][5] == null){
+                        board[5][5] = new Piece(Color.BLUE);
+                        board[zrow][zcol] = null;  
+                    }
+                    else if(board[4][4] == null){
+                        board[4][4] = new Piece(Color.BLUE);
+                        board[zrow][zcol] = null;  
+                    }
+                }
+            //GREEN WIN
+                    if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.GREEN){
+                        if(board[2][6] == null){
+                            board[2][6] = new Piece(Color.GREEN);
+                            board[zrow][zcol] = null;  
+                        }
+                        else if(board[3][5] == null){
+                            board[3][5] = new Piece(Color.GREEN);
+                            board[zrow][zcol] = null;  
+                        }
+                        else if(board[4][4] == null){
+                            board[4][4] = new Piece(Color.GREEN);
+                            board[zrow][zcol] = null;  
+                        }
+                    } 
+                //YELLOW WIN
+                        if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.YELLOW){
+                            if(board[6][2] == null){
+                                board[6][2] = new Piece(Color.YELLOW);
+                                board[zrow][zcol] = null;  
+                            }
+                            else if(board[5][3] == null){
+                                board[5][3] = new Piece(Color.YELLOW);
+                                board[zrow][zcol] = null;  
+                            }
+                            else if(board[4][4] == null){
+                                board[4][4] = new Piece(Color.YELLOW);
+                                board[zrow][zcol] = null;  
+                            }
+                        }
         }
         else{
             
@@ -387,6 +433,7 @@ How to Get Clone from Repository
 //            }
 //        }
     }
+    
 
     public static void Draw(Graphics2D g) {
 //Calculate the width and height of each board square.
