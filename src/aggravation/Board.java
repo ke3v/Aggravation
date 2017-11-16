@@ -348,9 +348,13 @@ How to Get Clone from Repository
             theDiceVal--;
         }
         System.out.println(row + " , " + col);
-         if(board[zrow][zcol].getPoints() + diceVal >= 24)
+        if(board[row][col] != null)
         {
-        //RED WIN      
+            Player.placeInOpenStart(board[row][col].getColor());
+        }
+        if(board[zrow][zcol].getPoints() + diceVal >= 24)
+        {
+            //RED WIN      
             if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.RED){               
                 if(board[2][2] == null){                
                     board[2][2] = new Piece(Color.RED);
@@ -366,58 +370,58 @@ How to Get Clone from Repository
                 }
             }
             //BLUE WIN
-                if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.BLUE){
-                    if(board[6][6] == null){
-                        board[6][6] = new Piece(Color.BLUE);
-                        board[zrow][zcol] = null;  
-                    }
-                    else if(board[5][5] == null){
-                        board[5][5] = new Piece(Color.BLUE);
-                        board[zrow][zcol] = null;  
-                    }
-                    else if(board[4][4] == null){
-                        board[4][4] = new Piece(Color.BLUE);
-                        board[zrow][zcol] = null;  
-                    }
+            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.BLUE){
+                if(board[6][6] == null){
+                    board[6][6] = new Piece(Color.BLUE);
+                    board[zrow][zcol] = null;  
                 }
+                else if(board[5][5] == null){
+                    board[5][5] = new Piece(Color.BLUE);
+                    board[zrow][zcol] = null;  
+                }
+                else if(board[4][4] == null){
+                    board[4][4] = new Piece(Color.BLUE);
+                    board[zrow][zcol] = null;  
+                }
+            }
             //GREEN WIN
-                    if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.GREEN){
-                        if(board[2][6] == null){
-                            board[2][6] = new Piece(Color.GREEN);
-                            board[zrow][zcol] = null;  
-                        }
-                        else if(board[3][5] == null){
-                            board[3][5] = new Piece(Color.GREEN);
-                            board[zrow][zcol] = null;  
-                        }
-                        else if(board[4][4] == null){
-                            board[4][4] = new Piece(Color.GREEN);
-                            board[zrow][zcol] = null;  
-                        }
-                    } 
-                //YELLOW WIN
-                        if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.YELLOW){
-                            if(board[6][2] == null){
-                                board[6][2] = new Piece(Color.YELLOW);
-                                board[zrow][zcol] = null;  
-                            }
-                            else if(board[5][3] == null){
-                                board[5][3] = new Piece(Color.YELLOW);
-                                board[zrow][zcol] = null;  
-                            }
-                            else if(board[4][4] == null){
-                                board[4][4] = new Piece(Color.YELLOW);
-                                board[zrow][zcol] = null;  
-                            }
-                        }
+            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.GREEN){
+                if(board[2][6] == null){
+                    board[2][6] = new Piece(Color.GREEN);
+                    board[zrow][zcol] = null;  
+                }
+                else if(board[3][5] == null){
+                    board[3][5] = new Piece(Color.GREEN);
+                    board[zrow][zcol] = null;  
+                }
+                else if(board[4][4] == null){
+                    board[4][4] = new Piece(Color.GREEN);
+                    board[zrow][zcol] = null;  
+                }
+            }
+            //YELLOW WIN
+            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.YELLOW){
+                if(board[6][2] == null){
+                    board[6][2] = new Piece(Color.YELLOW);
+                    board[zrow][zcol] = null;  
+                }
+                else if(board[5][3] == null){
+                    board[5][3] = new Piece(Color.YELLOW);
+                    board[zrow][zcol] = null;  
+                }
+                else if(board[4][4] == null){
+                    board[4][4] = new Piece(Color.YELLOW);
+                    board[zrow][zcol] = null;  
+                }
+            }
+            board[row][col] = null;
         }
-        else{
-            
-        board[row][col] = new Piece(Player.getCurrentPlayer().getColor(), board[zrow][zcol].getPoints() + diceVal);
-        board[zrow][zcol] = null;
-        if(board[row][col] != null)
-            {
-        System.out.println(board[row][col].getPoints());
+        else
+        {
+            board[row][col] = new Piece(Player.getCurrentPlayer().getColor(), board[zrow][zcol].getPoints() + diceVal);
+            board[zrow][zcol] = null;
+            if(board[row][col] != null){
+                System.out.println(board[row][col].getPoints());
             }
         }
         

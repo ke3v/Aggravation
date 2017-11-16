@@ -188,6 +188,44 @@ clockWise = true;
         
         return(Board.getBoard()[0][0]);
     }
+    public static void placeInOpenStart(Color _color) {
+        if(players[0].color == _color)
+        {
+            if(Board.getBoard()[0][8] == null)
+                Board.getBoard()[0][8] = new Piece(players[0].color,0);
+            else if(Board.getBoard()[1][8] == null)
+                Board.getBoard()[1][8] = new Piece(players[0].color,0);
+            else if(Board.getBoard()[0][7] == null)
+                Board.getBoard()[0][7] = new Piece(players[0].color,0);
+        }
+        else if(players[1].color == _color)
+        {
+           if(Board.getBoard()[8][8] == null)
+                Board.getBoard()[8][8] = new Piece(players[1].color,0);
+            else if(Board.getBoard()[8][7] == null)
+                Board.getBoard()[8][7] = new Piece(players[1].color,0);
+            else if(Board.getBoard()[7][8] == null)
+                Board.getBoard()[7][8] = new Piece(players[1].color,0);
+        }
+        else if(players[2].color == _color)
+        {
+            if(Board.getBoard()[8][0] == null)
+                Board.getBoard()[8][0] = new Piece(players[2].color,0);
+            else if(Board.getBoard()[8][1] == null)
+                Board.getBoard()[8][1] = new Piece(players[2].color,0);
+            else if(Board.getBoard()[7][0] == null)
+                Board.getBoard()[7][0] = new Piece(players[2].color,0);
+        }
+        else if(players[3].color == _color)
+        {
+            if(Board.getBoard()[0][0] == null)
+                Board.getBoard()[0][0] = new Piece(players[3].color,0);
+            else if(Board.getBoard()[0][1] == null)
+                Board.getBoard()[0][1] = new Piece(players[3].color,0);
+            else if(Board.getBoard()[1][0] == null)
+                Board.getBoard()[1][0] = new Piece(players[3].color,0);
+        }
+    }
 }   
 //    public static Player getOtherPlayer() {
 //        if (currentTurn == players[0])
