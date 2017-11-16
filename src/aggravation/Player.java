@@ -117,6 +117,36 @@ clockWise = true;
         
         return(false);
     }
+    public static boolean checkWinSpots(int zrow, int zcol) {
+            //RED WIN      
+                if(Board.getBoard()[zrow][zcol] != null){               
+                    if(Board.getBoard()[2][2] == Board.getBoard()[zrow][zcol] || Board.getBoard()[3][3] == Board.getBoard()[zrow][zcol] || Board.getBoard()[4][4] == Board.getBoard()[zrow][zcol]){                
+                        return true;
+                    }
+                }
+                //BLUE WIN
+                if(Board.getBoard()[zrow][zcol] != null){
+                    if(Board.getBoard()[6][6] == Board.getBoard()[zrow][zcol] || Board.getBoard()[5][5] == Board.getBoard()[zrow][zcol]  || Board.getBoard()[4][4] == Board.getBoard()[zrow][zcol]){
+                        return true;
+                    }
+                }
+                //GREEN WIN
+                if(Board.getBoard()[zrow][zcol] != null){
+                    if(Board.getBoard()[2][6] == Board.getBoard()[zrow][zcol] || Board.getBoard()[3][5] == Board.getBoard()[zrow][zcol] || Board.getBoard()[4][4] == Board.getBoard()[zrow][zcol]){
+                        return true;  
+                    }
+                }
+                //YELLOW WIN
+
+                if(Board.getBoard()[zrow][zcol] != null){
+                    if(Board.getBoard()[6][2] == Board.getBoard()[zrow][zcol] || Board.getBoard()[5][3] == Board.getBoard()[zrow][zcol] || Board.getBoard()[4][4] == Board.getBoard()[zrow][zcol]){
+                        return true;  
+                    }
+
+                }
+                return false;
+
+        }   
     
     public static boolean checkAllStart(Player thePlayer) {
         if(currentTurn == players[0]) {

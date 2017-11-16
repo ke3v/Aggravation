@@ -153,7 +153,7 @@ How to Get Clone from Repository
 
                     if(diceVal == 6 ) 
                     {
-
+                        
                     }
                     else if(diceVal != 6)
                     {
@@ -354,6 +354,7 @@ How to Get Clone from Repository
         }
         if(board[zrow][zcol].getPoints() + diceVal >= 24)
         {
+                        
             //RED WIN      
             if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.RED){               
                 if(board[2][2] == null){                
@@ -367,6 +368,7 @@ How to Get Clone from Repository
                 else if(board[4][4] == null){
                     board[4][4]= new Piece(Color.RED);
                     board[zrow][zcol] = null;  
+                    winner = Player.getPlayer4();
                 }
             }
             //BLUE WIN
@@ -381,7 +383,8 @@ How to Get Clone from Repository
                 }
                 else if(board[4][4] == null){
                     board[4][4] = new Piece(Color.BLUE);
-                    board[zrow][zcol] = null;  
+                    board[zrow][zcol] = null; 
+                    winner = Player.getPlayer2();
                 }
             }
             //GREEN WIN
@@ -397,6 +400,7 @@ How to Get Clone from Repository
                 else if(board[4][4] == null){
                     board[4][4] = new Piece(Color.GREEN);
                     board[zrow][zcol] = null;  
+                    winner = Player.getPlayer1();
                 }
             }
             //YELLOW WIN
@@ -411,7 +415,8 @@ How to Get Clone from Repository
                 }
                 else if(board[4][4] == null){
                     board[4][4] = new Piece(Color.YELLOW);
-                    board[zrow][zcol] = null;  
+                    board[zrow][zcol] = null; 
+                    winner = Player.getPlayer3();
                 }
             }
             board[row][col] = null;
@@ -507,12 +512,20 @@ How to Get Clone from Repository
             g.drawString("Roll dice guy", 200,100); 
         if (winner == Player.getPlayer1()) {
             g.setFont(new Font("Arial",Font.PLAIN,30));
-            g.drawString("Player 1 has Won", 200,70);              
+            g.drawString("Player Green has Won", 200,70);              
         }
         else if (winner == Player.getPlayer2()) {
             g.setFont(new Font("Arial",Font.PLAIN,30));
-            g.drawString("Player 2 has Won", 200,70);              
+            g.drawString("Player Blue has Won", 200,70);              
         }
+        else if (winner == Player.getPlayer3()) {
+            g.setFont(new Font("Arial",Font.PLAIN,30));
+            g.drawString("Player Yellow has Won", 200,70);              
+        }
+        else if (winner == Player.getPlayer4()) {
+            g.setFont(new Font("Arial",Font.PLAIN,30));
+            g.drawString("Player Red has Won", 200,70);              
+        }        
         else {
             g.setFont(new Font("Arial",Font.PLAIN,30));
             if (Player.getCurrentPlayer() == Player.getPlayer1())
@@ -527,14 +540,14 @@ How to Get Clone from Repository
             {
                 for (int zx = 0;zx<NUM_COLUMNS;zx++)
                 {
-                    if (board[zi][zx] != null)
+                    if (board[zi][zx] != null && !Player.checkWinSpots(zi, zx))
                     {
                         g.setColor(Player.getBGColor());
                         if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled && (diceVal == 1 || diceVal == 6) && Player.getFirstSpot() == null) {
                             g.fillRect(Window.getX(zx*xdelta),
                             Window.getY(zi*ydelta),xdelta,ydelta);
                         }
-                        else if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled) {
+                        else if(board[zi][zx].getColor() == Player.getCurrentPlayer().getColor() && diceRolled ) {
                             if(!Player.checkStart(Player.getCurrentPlayer(), zi, zx))
                             g.fillRect(Window.getX(zx*xdelta),
                             Window.getY(zi*ydelta),xdelta,ydelta);
