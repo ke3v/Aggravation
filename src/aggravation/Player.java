@@ -2,6 +2,7 @@
 package aggravation;
 
 import java.awt.Color;
+import java.awt.Font;
 
 public class Player {
     private static Player currentTurn;
@@ -39,8 +40,15 @@ How to Get Clone from Repository
     Player(Color _color) {
         points = 0;
         color = _color;
-//        clockWise = ((int)(Math.random()*2) == 1);
-clockWise = true;
+        int num = ((int)(Math.random()*2));       
+        if(num == 1)
+            clockWise = true;
+        else if(num == 0)
+            clockWise = false;
+        
+
+        
+        
     }
     public Color getColor() {
         return (color);
@@ -92,25 +100,33 @@ clockWise = true;
     public static boolean checkStart(Player thePlayer, int row, int col) {
         if(currentTurn == players[0]) {
             if(Board.getBoard()[row][col]!=null && (Board.getBoard()[row][col] == Board.getBoard()[0][8] || 
-                Board.getBoard()[row][col] == Board.getBoard()[1][8] || Board.getBoard()[row][col] == Board.getBoard()[0][7])) {
+                Board.getBoard()[row][col] == Board.getBoard()[1][8] || Board.getBoard()[row][col] == Board.getBoard()[0][7]) ||
+                Board.getBoard()[row][col] == Board.getBoard()[2][6] || Board.getBoard()[row][col] == Board.getBoard()[3][5]
+                || Board.getBoard()[row][col] == Board.getBoard()[4][4]) {
                return(true); 
             }
         }
         else if(currentTurn == players[1]) {
             if(Board.getBoard()[row][col]!=null && (Board.getBoard()[row][col] == Board.getBoard()[8][8] || 
-                Board.getBoard()[row][col] == Board.getBoard()[8][7] || Board.getBoard()[row][col] == Board.getBoard()[7][8])) {
+                Board.getBoard()[row][col] == Board.getBoard()[8][7] || Board.getBoard()[row][col] == Board.getBoard()[7][8]) ||
+                Board.getBoard()[row][col] == Board.getBoard()[6][6] || Board.getBoard()[row][col] == Board.getBoard()[5][5]
+                || Board.getBoard()[row][col] == Board.getBoard()[4][4]) {
                return(true); 
             }
         }
         else if(currentTurn == players[2]) {
             if(Board.getBoard()[row][col]!=null && (Board.getBoard()[row][col] == Board.getBoard()[8][0] || 
-                Board.getBoard()[row][col] == Board.getBoard()[8][1] || Board.getBoard()[row][col] == Board.getBoard()[7][0])) {
+                Board.getBoard()[row][col] == Board.getBoard()[8][1] || Board.getBoard()[row][col] == Board.getBoard()[7][0])
+                || Board.getBoard()[row][col] == Board.getBoard()[6][2] || Board.getBoard()[row][col] == Board.getBoard()[5][3]
+                || Board.getBoard()[row][col] == Board.getBoard()[4][4]) {
                return(true); 
             }
         }
         else if(currentTurn == players[3]) {
             if(Board.getBoard()[row][col]!=null && (Board.getBoard()[row][col] == Board.getBoard()[0][0] || 
-                Board.getBoard()[row][col] == Board.getBoard()[0][1] || Board.getBoard()[row][col] == Board.getBoard()[1][0])) {
+                Board.getBoard()[row][col] == Board.getBoard()[0][1] || Board.getBoard()[row][col] == Board.getBoard()[1][0])
+                || Board.getBoard()[row][col] == Board.getBoard()[2][2] || Board.getBoard()[row][col] == Board.getBoard()[3][3]
+                || Board.getBoard()[row][col] == Board.getBoard()[4][4])  {
                return(true); 
             }
         }
@@ -151,7 +167,7 @@ clockWise = true;
     public static boolean checkAllStart(Player thePlayer) {
         if(currentTurn == players[0]) {
             if((Board.getBoard()[0][8] != null && 
-                Board.getBoard()[1][8] != null &&  Board.getBoard()[0][7] != null)) {
+                Board.getBoard()[1][8] != null &&  Board.getBoard()[0][7] != null)){
                return(true); 
             }
         }

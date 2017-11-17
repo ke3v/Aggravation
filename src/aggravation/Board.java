@@ -160,12 +160,7 @@ How to Get Clone from Repository
                         chosePiece = false;
                         Player.switchTurn();
                     }
-                }
-//                else
-//                {
-//                    Player.switchTurn();
-//                    diceRolled = false;
-//                }
+                }                        
             
             }
             
@@ -181,9 +176,9 @@ How to Get Clone from Repository
                         
                         
                     }
-                    else 
+                    else if(!Player.getCurrentPlayer().getDirection())
                     {
-                        
+                        Move2(zrow,zcol);
 
                     }
                     diceRolled = false;
@@ -196,8 +191,8 @@ How to Get Clone from Repository
                     chosePiece = false;
                     Player.switchTurn();
                 }
-                
-            }
+              
+            } 
         }        
         
     }
@@ -208,12 +203,13 @@ How to Get Clone from Repository
         int zrow = row;
         int zcol = col;
         boolean notMoved = true;
-        System.out.println("spot " + row + "," + col);
+//        System.out.println("spot " + row + "," + col);
     
-        while (theDiceVal > 0)
-        {
+    while (theDiceVal > 0)
+    {
             notMoved = true;
             // RED CORNER
+        if(Player.getCurrentPlayer().getDirection() == true){ 
             if (row == 2 && col == 0)
             {
                 row = 1;
@@ -344,11 +340,17 @@ How to Get Clone from Repository
                 row = 2;
                 col = 0;
             }
-            //board[row][col] = new Piece(Player.getCurrentPlayer().getColor());
-            theDiceVal--;
-        }
-        System.out.println(row + " , " + col);
-        if(board[row][col] != null)
+        }   
+            //Red Line  
+
+            
+        
+    theDiceVal--; 
+        
+              
+    }
+ //       System.out.println(row + " , " + col);
+        if(board[row][col] != null && board[row][col].getPoints() < 24)
         {
             Player.placeInOpenStart(board[row][col].getColor());
         }
@@ -442,6 +444,228 @@ How to Get Clone from Repository
 //            }
 //        }
     }
+    public static void Move2(int row, int col) { 
+        int theDiceVal = diceVal;        
+        int zrow = row;
+        int zcol = col;        
+        
+        
+        
+//    if(Player.getCurrentPlayer().getDirection() == true){
+//        g.setFont(new Font("Arial",Font.PLAIN,16));
+//        g.drawString("Score: ",, 50);
+//        }
+        
+     
+        while(theDiceVal > 0){
+            //Red Line  
+//System.out.println("You are in reverse Code");
+            if (row == 0 && col == 2)
+            {
+                row = 1;
+                col = 1;
+            }
+            else if (row == 1 && col == 1){               
+                row = 2;
+                col = 0;
+            }
+            else if (row == 2 && col == 0){               
+                row = 3;
+                col = 0;
+            }
+            else if (row == 3 && col == 0){               
+                row = 4;
+                col = 0;
+            }             
+            else if (row == 4 && col == 0){               
+                row = 5;
+                col = 0;
+            }
+            else if (row == 5 && col == 0){                
+                row = 6;
+                col = 0;
+            }
+            else if (row == 6 && col == 0){                
+                row = 7;
+                col = 1;
+            }
+            else if (row == 7 && col == 1){
+                
+                row = 8;
+                col = 2;
+            }
+            
+            // Yellow Line
+            else if (row == 8 && col == 2)
+            {
+                
+                row = 8;
+                col = 3;
+            }
+            else if (row == 8 && col == 3){
+                
+                row = 8;
+                col = 4;
+            }
+            else if (row == 8 && col == 4){
+                
+                row = 8;
+                col = 5;
+            }
+            else if (row == 8 && col == 5){
+                
+                row = 8;
+                col = 6;
+            }
+            else if (row == 8 && col == 6){
+                
+                row = 7;
+                col = 7;
+            }
+            
+            // Blue Line
+            else if (row == 7 && col == 7)
+            {                
+                row = 6;
+                col = 8;
+            }
+            else if (row == 6 && col == 8){                
+                row = 5;
+                col = 8;
+            }
+            else if (row == 5 && col == 8){                
+                row = 4;
+                col = 8;
+            }
+            else if (row == 4 && col == 8){                
+                row = 3;
+                col = 8;
+            }
+            else if (row == 3 && col == 8){               
+                row = 2;
+                col = 8;
+            }            
+            // Green Line
+            else if (row == 2 && col == 8)
+            {
+                
+                row = 1;
+                col = 7;
+            }
+            else if (row == 1 && col == 7){
+                
+                row = 0;
+                col = 6;
+            }
+            else if (row == 0 && col == 6){
+                
+                row = 0;
+                col = 5;
+            }
+            else if (row == 0 && col == 5){
+                
+                row = 0;
+                col = 4;
+            }
+            else if (row == 0 && col == 4){
+                
+                row = 0;
+                col = 3;
+            }
+            else if (row == 0 && col == 3){
+                
+                row = 0;
+                col = 2;
+            }
+            
+            theDiceVal--;
+        }
+ //       System.out.println(row + " , " + col);
+        if(board[row][col] != null && board[row][col].getPoints() < 24)
+        {
+            Player.placeInOpenStart(board[row][col].getColor());
+        }
+        if(board[zrow][zcol].getPoints() + diceVal >= 24)
+        {
+                        
+            //RED WIN      
+            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.RED){               
+                if(board[2][2] == null){                
+                    board[2][2] = new Piece(Color.RED);
+                    board[zrow][zcol] = null;
+                }
+                else if(board[3][3] == null){
+                   board[3][3]= new Piece(Color.RED);
+                    board[zrow][zcol] = null;                   
+                }
+                else if(board[4][4] == null){
+                    board[4][4]= new Piece(Color.RED);
+                    board[zrow][zcol] = null;  
+                    winner = Player.getPlayer4();
+                }
+            }
+            //BLUE WIN
+            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.BLUE){
+                if(board[6][6] == null){
+                    board[6][6] = new Piece(Color.BLUE);
+                    board[zrow][zcol] = null;  
+                }
+                else if(board[5][5] == null){
+                    board[5][5] = new Piece(Color.BLUE);
+                    board[zrow][zcol] = null;  
+                }
+                else if(board[4][4] == null){
+                    board[4][4] = new Piece(Color.BLUE);
+                    board[zrow][zcol] = null; 
+                    winner = Player.getPlayer2();
+                }
+            }
+            //GREEN WIN
+            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.GREEN){
+                if(board[2][6] == null){
+                    board[2][6] = new Piece(Color.GREEN);
+                    board[zrow][zcol] = null;  
+                }
+                else if(board[3][5] == null){
+                    board[3][5] = new Piece(Color.GREEN);
+                    board[zrow][zcol] = null;  
+                }
+                else if(board[4][4] == null){
+                    board[4][4] = new Piece(Color.GREEN);
+                    board[zrow][zcol] = null;  
+                    winner = Player.getPlayer1();
+                }
+            }
+            //YELLOW WIN
+            if(board[zrow][zcol] != null && board[zrow][zcol].getColor() == Color.YELLOW){
+                if(board[6][2] == null){
+                    board[6][2] = new Piece(Color.YELLOW);
+                    board[zrow][zcol] = null;  
+                }
+                else if(board[5][3] == null){
+                    board[5][3] = new Piece(Color.YELLOW);
+                    board[zrow][zcol] = null;  
+                }
+                else if(board[4][4] == null){
+                    board[4][4] = new Piece(Color.YELLOW);
+                    board[zrow][zcol] = null; 
+                    winner = Player.getPlayer3();
+                }
+            }
+            board[row][col] = null;
+        }
+        else
+        {
+            board[row][col] = new Piece(Player.getCurrentPlayer().getColor(), board[zrow][zcol].getPoints() + diceVal);
+            board[zrow][zcol] = null;
+            if(board[row][col] != null){
+                System.out.println(board[row][col].getPoints());
+            }
+        }                
+                
+        
+        
+    }    
     
 
     public static void Draw(Graphics2D g) {
