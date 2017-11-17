@@ -729,7 +729,7 @@ How to Get Clone from Repository
         g.setColor(Color.black);
         g.setFont(new Font("Arial",Font.PLAIN,30));
         if(!diceRolled)
-            g.drawString("Roll dice guy", 200,100); 
+            g.drawString("Roll Dice", 300,250); 
         if (winner == Player.getPlayer1()) {
             g.setFont(new Font("Arial",Font.PLAIN,30));
             g.drawString("Player Green has Won", 200,70);              
@@ -749,13 +749,13 @@ How to Get Clone from Repository
         else {
             g.setFont(new Font("Arial",Font.PLAIN,30));
             if (Player.getCurrentPlayer() == Player.getPlayer1())
-                g.drawString("Green's turn", 200,70);
+                g.drawString("Green's Turn", 275,200);
             if(Player.getCurrentPlayer() == Player.getPlayer2())
-                g.drawString("Blue's turn", 200,70); 
+                g.drawString("Blue's Turn", 275,200); 
             if(Player.getCurrentPlayer() == Player.getPlayer3())
-                g.drawString("Yellow's turn", 200,70); 
+                g.drawString("Yellow's Turn", 275,200); 
             if(Player.getCurrentPlayer() == Player.getPlayer4())
-                g.drawString("Red's turn", 200,70); 
+                g.drawString("Red's Turn", 275,200); 
             for (int zi = 0;zi<NUM_ROWS;zi++)
             {
                 for (int zx = 0;zx<NUM_COLUMNS;zx++)
