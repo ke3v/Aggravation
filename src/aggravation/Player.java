@@ -192,6 +192,84 @@ How to Get Clone from Repository
         
         return(false);
     }
+    public static boolean checkPath() {
+ 
+        if(Board.getBoard()[1][1] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[1][1].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[0][2] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[0][2].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[0][3] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[0][3].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[0][4] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[0][4].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[0][5] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[0][5].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[0][6] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[0][6].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[1][7] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[1][7].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[2][8] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[2][8].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[3][8] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[3][8].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[4][8] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[4][8].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[5][8] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[5][8].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[6][8] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[6][8].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[7][7] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[7][7].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[8][6] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[8][6].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[8][5] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[8][5].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[8][4] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[8][4].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[8][3] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[8][3].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[8][2] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[8][2].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[7][1] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[7][1].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[6][0] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[6][0].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[5][0] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[5][0].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[4][0] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[4][0].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[3][0] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[3][0].getColor()){
+            return(true);
+        }
+        else if(Board.getBoard()[2][0] != null && Player.getCurrentPlayer().getColor() == Board.getBoard()[2][0].getColor()){
+            return(true);
+        }
+              
+            
+        return false;
+    }
     
     public static void placeStart(int diceVal) {
         if(diceVal == 1 || diceVal == 6)

@@ -119,17 +119,17 @@ How to Get Clone from Repository
                 diceVal = (int)(Math.random()*6+1);
                 if(Player.checkAllStart(Player.getCurrentPlayer()) && Player.getFirstSpot() != null) 
                     Player.switchTurn();
-                else if(diceVal == 6) {
+                else if(diceVal == 6 && Player.checkPath()) {
                     diceRolled = true;
                     chosePiece = false;
                 }
-                else if(diceVal == 1) {
+                else if(diceVal == 1 && Player.getFirstSpot() == null) {
                     diceRolled = true;
                     chosePiece = false;
                     
                 }
                 else {
-                    if(Player.checkAllStart(Player.getCurrentPlayer())) {
+                    if(Player.checkAllStart(Player.getCurrentPlayer()) || !Player.checkPath()) {
                         diceRolled = false;
                         chosePiece = false;
                         Player.switchTurn();
@@ -451,11 +451,7 @@ How to Get Clone from Repository
         
         
         
-//    if(Player.getCurrentPlayer().getDirection() == true){
-//        g.setFont(new Font("Arial",Font.PLAIN,16));
-//        g.drawString("Score: ",, 50);
-//        }
-        
+       
      
         while(theDiceVal > 0){
             //Red Line  

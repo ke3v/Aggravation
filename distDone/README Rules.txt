@@ -17,3 +17,9 @@ automatically sent to a safe zone, where it can no longer be killed or moved.
 
 5) The first player to get all 3 pieces around the board, and get all three pieces
 into their safe zone will win.
+
+6) If oyu get a 6 but use it on a piece outside the homebase, you don't get to role
+again.
+
+7)If a piece is in front of your starting position and you role a 6 or a 1, then
+you won't be able to move out.
